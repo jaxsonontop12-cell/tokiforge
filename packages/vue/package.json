@@ -1,0 +1,41 @@
+{
+  "name": "@tokiforge/vue",
+  "version": "1.0.0",
+  "description": "Vue adapter for TokiForge theming",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --external vue",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external vue",
+    "lint": "eslint src --ext .ts",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0",
+    "@tokiforge/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@tokiforge/core": "^1.0.0"
+  },
+  "keywords": [
+    "vue",
+    "theming",
+    "design-tokens"
+  ],
+  "author": "TokiForge Community",
+  "license": "MIT"
+}
+
