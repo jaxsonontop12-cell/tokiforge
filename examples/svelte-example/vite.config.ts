@@ -1,0 +1,21 @@
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default defineConfig({
+  plugins: [svelte()],
+  resolve: {
+    alias: {
+      'fs': resolve(__dirname, 'src/stubs/fs.ts'),
+      'path': resolve(__dirname, 'src/stubs/path.ts'),
+    },
+  },
+  optimizeDeps: {
+    exclude: ['fs', 'path'],
+  },
+});
+

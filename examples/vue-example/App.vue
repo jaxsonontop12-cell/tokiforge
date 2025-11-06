@@ -14,15 +14,24 @@
 </template>
 
 <script setup lang="ts">
-import { provideTheme, useTheme } from '@TokiForge/vue';
-import tokens from '../tokens.json';
+import { provideTheme, useTheme } from '@tokiforge/vue';
+import tokens from './tokens.json';
 
 const themeConfig = {
   themes: [
-    {
-      name: 'light',
-      tokens: tokens,
-    },
+      {
+        name: 'light',
+        tokens: {
+          ...tokens,
+          color: {
+            ...tokens.color,
+            text: {
+              primary: { value: '#1E293B', type: 'color' },
+              secondary: { value: '#64748B', type: 'color' },
+            },
+          },
+        },
+      },
     {
       name: 'dark',
       tokens: {
@@ -64,7 +73,7 @@ const toggleTheme = () => {
 
 .theme-button {
   background-color: var(--hf-color-primary);
-  color: var(--hf-color-text-primary);
+  color: #FFFFFF;
   border-radius: var(--hf-radius-lg);
   padding: var(--hf-spacing-md) var(--hf-spacing-lg);
   border: none;

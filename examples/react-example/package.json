@@ -2,6 +2,7 @@
   "name": "TokiForge-react-example",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +11,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@tokiforge/core": "workspace:*",
-    "@tokiforge/react": "workspace:*"
+    "@tokiforge/core": "file:../../packages/core",
+    "@tokiforge/react": "file:../../packages/react"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

@@ -1,0 +1,22 @@
+.theme-button {
+  background-color: var(--hf-color-primary);
+  color: #FFFFFF;
+  border-radius: var(--hf-radius-lg);
+  padding: var(--hf-spacing-md) var(--hf-spacing-lg);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.theme-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.theme-button:active {
+  transform: translateY(0);
+}
+

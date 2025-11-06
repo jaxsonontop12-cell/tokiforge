@@ -1,0 +1,23 @@
+{
+  "name": "TokiForge-vue-example",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "@tokiforge/core": "file:../../packages/core",
+    "@tokiforge/vue": "file:../../packages/vue"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0",
+    "@types/node": "^20.10.0"
+  }
+}
+

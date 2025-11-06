@@ -37,6 +37,15 @@ npm install @tokiforge/svelte
 - Reactive theme management
 - See [Svelte Guide](/guide/svelte)
 
+### Angular
+```bash
+npm install @tokiforge/angular
+```
+- Angular 17+ support
+- `ThemeService` with signals
+- SSR-safe with `@angular/ssr`
+- See [Angular Guide](/guide/angular)
+
 ## Works With Any Framework
 
 Since TokiForge uses CSS variables, it works with **any framework**:
@@ -45,6 +54,8 @@ Since TokiForge uses CSS variables, it works with **any framework**:
 
 ```typescript
 import { ThemeRuntime } from '@tokiforge/core';
+import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -56,14 +67,20 @@ import { ThemeRuntime } from '@tokiforge/core';
     }
   `]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  private platformId = inject(PLATFORM_ID);
   runtime = new ThemeRuntime(config);
   
   ngOnInit() {
-    this.runtime.init();
+    // SSR-safe initialization (Angular 17+ with @angular/ssr)
+    if (isPlatformBrowser(this.platformId)) {
+      this.runtime.init();
+    }
   }
 }
 ```
+
+**Note:** TokiForge works with Angular 17+ using the modern `@angular/ssr` package (Angular Universal has been deprecated). The runtime automatically handles server-side rendering safely.
 
 ### Next.js
 
@@ -240,13 +257,25 @@ TokiForge is SSR-safe and works with:
 - SvelteKit
 - Nuxt
 - Astro
+- **Angular 17+** (using `@angular/ssr` - Angular Universal deprecated)
 - Any SSR framework
 
 The runtime automatically detects server environments:
 
 ```typescript
+// Framework-agnostic approach
 if (typeof window !== 'undefined') {
   runtime.init(); // Only runs in browser
+}
+
+// Angular-specific (recommended for Angular 17+)
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, inject } from '@angular/core';
+
+private platformId = inject(PLATFORM_ID);
+
+if (isPlatformBrowser(this.platformId)) {
+  runtime.init();
 }
 ```
 

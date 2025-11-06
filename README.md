@@ -4,6 +4,8 @@
 
 TokiForge is a next-generation **open-source design token and theming engine** built for developers and designers who demand elegance, speed, and consistency. **Works with any framework** — React, Vue, Svelte, Angular, Next.js, Remix, Solid, Qwik, or even vanilla JavaScript. TokiForge lets you define, sync, and switch your themes effortlessly.
 
+**Keywords:** design tokens, theme engine, theming library, CSS variables, design system, runtime theming, React theming, Vue theming, Angular theming, Svelte theming, theme switching, dark mode, light mode, color tokens, design tokens library, frontend theming, token parser, style dictionary alternative
+
 ---
 
 ## 🧩 Overview
@@ -45,7 +47,8 @@ In short — it's your **complete color and theme infrastructure**, built for th
 * React: `@tokiforge/react` → useTheme(), ThemeProvider
 * Vue: `@tokiforge/vue` → composables for reactivity
 * Svelte: `@tokiforge/svelte` → reactive bindings
-* **Any Framework**: `@tokiforge/core` → Works with Angular, Next.js, Remix, Solid, Qwik, Astro, and more!
+* Angular: `@tokiforge/angular` → ThemeService with Signals
+* **Any Framework**: `@tokiforge/core` → Works with Next.js, Remix, Solid, Qwik, Astro, and more!
 * Vanilla: pure JS API
 
 **4. CLI Tool (`tokiforge-cli`)**
@@ -78,7 +81,7 @@ In short — it's your **complete color and theme infrastructure**, built for th
                  │
    ┌─────────────▼───────────────┐
    │   Framework Adapters        │
-   │ (React/Vue/Svelte/Vanilla)  │
+   │ (React/Vue/Svelte/Angular)  │
    └─────────────┬───────────────┘
                  │
    ┌─────────────▼───────────────┐
@@ -188,11 +191,28 @@ tokiforge dev
 
 ---
 
-## 🧠 Example Usage
+## 📦 Installation
+
+Install TokiForge for your framework:
 
 ```bash
+# React
 npm install @tokiforge/core @tokiforge/react
+
+# Vue
+npm install @tokiforge/core @tokiforge/vue
+
+# Angular
+npm install @tokiforge/core @tokiforge/angular
+
+# Svelte
+npm install @tokiforge/core @tokiforge/svelte
+
+# Vanilla JavaScript / Any Framework
+npm install @tokiforge/core
 ```
+
+## 🧠 Example Usage
 
 **Define tokens (`tokens.json`):**
 
@@ -266,9 +286,10 @@ TokiForge was designed around three guiding principles:
 
 * [x] MVP: Core engine + React adapter
 * [x] CLI tooling
-* [x] Vue/Svelte adapters
+* [x] Vue/Svelte/Angular adapters
 * [x] **Smart color utilities** - lighten, darken, generate shades
 * [x] **Auto dark theme generation**
+* [x] **Angular 17+ support** with Signals and SSR
 * [ ] **VS Code Extension** - autocomplete & live preview
 * [ ] **Theme Playground** - shareable preview URLs
 * [ ] **Accessibility Dashboard** - WCAG compliance checker
@@ -282,7 +303,7 @@ TokiForge was designed around three guiding principles:
 
 ## 🌟 Community & Contribution
 
-Join our open-source family at [github.com/tokiforge/tokiforge](#) ❤️
+Join our open-source family at [github.com/tokiforge/tokiforge](https://github.com/tokiforge/tokiforge) ❤️
 
 ### How to Contribute
 
@@ -292,11 +313,56 @@ Join our open-source family at [github.com/tokiforge/tokiforge](#) ❤️
 
 We welcome designers, frontend devs, and design-system engineers.
 
+### Star Us on GitHub
+
+If you find TokiForge useful, please consider giving us a ⭐ on [GitHub](https://github.com/tokiforge/tokiforge). Your support helps us grow!
+
 ---
 
 ## 💬 License
 
 MIT License — free for personal and commercial use.
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+
+### What is TokiForge?
+
+TokiForge is a framework-agnostic design token and theming engine that enables runtime theme switching using CSS custom properties. It works with React, Vue, Svelte, Angular, and any other JavaScript framework.
+
+### How does TokiForge compare to Style Dictionary?
+
+TokiForge provides runtime theme switching capabilities that Style Dictionary doesn't offer. While Style Dictionary focuses on build-time token transformation, TokiForge adds a lightweight runtime engine (<3KB) for dynamic theme management.
+
+### Does TokiForge support dark mode?
+
+Yes! TokiForge has built-in support for light/dark themes and can automatically generate dark themes from light theme tokens using smart color utilities.
+
+### Is TokiForge production-ready?
+
+Yes, TokiForge is production-ready with support for React, Vue, Svelte, and Angular. It's optimized for performance with a <3KB gzipped runtime footprint.
+
+### Can I use TokiForge with TypeScript?
+
+Absolutely! TokiForge is written in TypeScript and provides full type safety for design tokens and theme configurations.
+
+### Does TokiForge work with SSR (Server-Side Rendering)?
+
+Yes, TokiForge is SSR-safe and works with Next.js, Remix, Angular SSR, and other SSR frameworks. The Angular adapter specifically supports `@angular/ssr`.
+
+### How do I install TokiForge?
+
+```bash
+npm install @tokiforge/core @tokiforge/react  # For React
+npm install @tokiforge/core @tokiforge/vue   # For Vue
+npm install @tokiforge/core @tokiforge/angular # For Angular
+npm install @tokiforge/core @tokiforge/svelte # For Svelte
+```
+
+### What browsers does TokiForge support?
+
+TokiForge uses CSS custom properties (CSS variables) which are supported in all modern browsers. It includes fallbacks for legacy browser support.
 
 ---
 

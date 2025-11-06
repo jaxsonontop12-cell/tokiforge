@@ -1,13 +1,22 @@
 import { ThemeProvider, useTheme } from '@tokiforge/react';
-import { TokenParser } from '@tokiforge/core';
-import tokens from '../tokens.json';
+import tokens from './tokens.json';
+import './App.css';
 
 // Create theme config
 const themeConfig = {
   themes: [
     {
       name: 'light',
-      tokens: tokens,
+      tokens: {
+        ...tokens,
+        color: {
+          ...tokens.color,
+          text: {
+            primary: { value: '#1E293B', type: 'color' },
+            secondary: { value: '#64748B', type: 'color' },
+          },
+        },
+      },
     },
     {
       name: 'dark',
@@ -31,25 +40,33 @@ const themeConfig = {
 };
 
 function Button() {
-  const { tokens, setTheme, theme } = useTheme();
+  const { setTheme, theme } = useTheme();
   
   return (
     <button
-      style={{
-        backgroundColor: tokens.color.primary as string,
-        color: tokens.color.text.primary as string,
-        borderRadius: tokens.radius.lg as string,
-        padding: `${tokens.spacing.md} ${tokens.spacing.lg}`,
-        border: 'none',
-        cursor: 'pointer',
-        fontSize: '16px',
-        fontWeight: 600,
-        transition: 'all 0.2s',
-      }}
+      className="theme-button"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
       Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
     </button>
+  );
+}
+
+function TokensDisplay() {
+  const { tokens: themeTokens } = useTheme();
+  
+  return (
+    <div style={{ marginTop: '2rem' }}>
+      <h2>Theme Tokens</h2>
+      <pre style={{ 
+        backgroundColor: 'var(--hf-color-background-muted)', 
+        padding: '1rem',
+        borderRadius: 'var(--hf-radius-md)',
+        overflow: 'auto'
+      }}>
+        {JSON.stringify(themeTokens, null, 2)}
+      </pre>
+    </div>
   );
 }
 
@@ -68,18 +85,7 @@ function App() {
         <h1>🌈 TokiForge React Example</h1>
         <p>This demonstrates the TokiForge theming system with React.</p>
         <Button />
-        
-        <div style={{ marginTop: '2rem' }}>
-          <h2>Theme Tokens</h2>
-          <pre style={{ 
-            backgroundColor: 'var(--hf-color-background-muted)', 
-            padding: '1rem',
-            borderRadius: 'var(--hf-radius-md)',
-            overflow: 'auto'
-          }}>
-            {JSON.stringify(themeConfig.themes.find(t => t.name === 'light')?.tokens, null, 2)}
-          </pre>
-        </div>
+        <TokensDisplay />
       </div>
     </ThemeProvider>
   );

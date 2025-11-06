@@ -1,13 +1,51 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'TokiForge',
-  description: 'Modern Design Token & Theme Engine',
+  title: 'TokiForge - Modern Design Token & Theme Engine',
+  description: 'TokiForge is a framework-agnostic design token and theming engine for React, Vue, Svelte, Angular, and more. Runtime theme switching, CSS variables, and smart color utilities. <3KB gzipped.',
   base: '/',
   
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#7C3AED' }],
+    ['meta', { name: 'keywords', content: 'design tokens, theme engine, theming, CSS variables, design system, theme switching, runtime theming, React theming, Vue theming, Angular theming, Svelte theming, design tokens library, color tokens, design system tools, frontend theming, dark mode, light mode, theme management, token parser, style dictionary' }],
+    ['meta', { name: 'author', content: 'TokiForge Community' }],
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'TokiForge - Modern Design Token & Theme Engine' }],
+    ['meta', { property: 'og:description', content: 'Framework-agnostic design token and theming engine. Runtime theme switching, CSS variables, and smart color utilities for React, Vue, Svelte, Angular, and more.' }],
+    ['meta', { property: 'og:image', content: '/logo.svg' }],
+    ['meta', { property: 'og:url', content: 'https://tokiforge.dev' }],
+    ['meta', { property: 'og:site_name', content: 'TokiForge' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'TokiForge - Modern Design Token & Theme Engine' }],
+    ['meta', { name: 'twitter:description', content: 'Framework-agnostic design token and theming engine for React, Vue, Svelte, Angular, and more.' }],
+    ['meta', { name: 'twitter:image', content: '/logo.svg' }],
+    ['script', { type: 'application/ld+json' }, JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      'name': 'TokiForge',
+      'applicationCategory': 'DeveloperApplication',
+      'operatingSystem': 'Web',
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'USD'
+      },
+      'aggregateRating': {
+        '@type': 'AggregateRating',
+        'ratingValue': '5',
+        'ratingCount': '1'
+      },
+      'description': 'Framework-agnostic design token and theming engine for React, Vue, Svelte, Angular, and more.',
+      'url': 'https://github.com/tokiforge/tokiforge',
+      'author': {
+        '@type': 'Organization',
+        'name': 'TokiForge Community'
+      },
+      'keywords': 'design tokens, theme engine, theming, CSS variables, design system, React, Vue, Angular, Svelte'
+    })],
   ],
 
   themeConfig: {
@@ -38,6 +76,7 @@ export default defineConfig({
           items: [
             { text: 'React', link: '/guide/react' },
             { text: 'Vue', link: '/guide/vue' },
+            { text: 'Angular', link: '/guide/angular' },
             { text: 'Svelte', link: '/guide/svelte' },
             { text: 'Any Framework', link: '/guide/framework-support' },
           ],
@@ -67,6 +106,7 @@ export default defineConfig({
           items: [
             { text: 'React', link: '/api/react' },
             { text: 'Vue', link: '/api/vue' },
+            { text: 'Angular', link: '/api/angular' },
             { text: 'Svelte', link: '/api/svelte' },
           ],
         },
@@ -77,6 +117,7 @@ export default defineConfig({
           items: [
             { text: 'React Example', link: '/examples/react' },
             { text: 'Vue Example', link: '/examples/vue' },
+            { text: 'Angular Example', link: '/examples/angular' },
             { text: 'Svelte Example', link: '/examples/svelte' },
             { text: 'CLI Usage', link: '/examples/cli' },
           ],
@@ -106,6 +147,19 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
+
+    editLink: {
+      pattern: 'https://github.com/tokiforge/tokiforge/edit/main/docs/:path',
+      text: 'Edit this page on GitHub',
+    },
+
+    lastUpdated: {
+      text: 'Last updated',
+    },
+  },
+
+  sitemap: {
+    hostname: 'https://tokiforge.dev',
   },
 });
 
