@@ -77,12 +77,15 @@ jobs:
         uses: actions/configure-pages@v4
         id: pages
         continue-on-error: true
+        with:
+          enablement: false
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: documentation/.vitepress/dist
         continue-on-error: true
+        if: always()
 
   deploy:
     environment:
@@ -96,5 +99,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         continue-on-error: true
-        if: success() || failure()
+        if: always()
 
