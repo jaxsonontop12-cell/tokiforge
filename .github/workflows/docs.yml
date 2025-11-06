@@ -34,9 +34,29 @@ jobs:
       - name: Install dependencies
         run: |
           cd documentation
+          echo "Current directory: $(pwd)"
+          echo "Checking for package-lock.json..."
           if [ -f package-lock.json ]; then
-            npm ci
+            echo "package-lock.json exists"
+            if [ -s package-lock.json ]; then
+              echo "package-lock.json is not empty"
+              if grep -q '"lockfileVersion"' package-lock.json; then
+                echo "package-lock.json has valid lockfileVersion"
+                echo "Running npm ci..."
+                npm ci || {
+                  echo "npm ci failed, falling back to npm install"
+                  npm install
+                }
+              else
+                echo "package-lock.json missing lockfileVersion, using npm install"
+                npm install
+              fi
+            else
+              echo "package-lock.json is empty, using npm install"
+              npm install
+            fi
           else
+            echo "package-lock.json not found, using npm install"
             npm install
           fi
 
