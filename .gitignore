@@ -8,6 +8,8 @@ pnpm-lock.yaml
 dist/
 build/
 *.tsbuildinfo
+packages/*/dist/
+packages/*/build/
 
 # Logs
 *.log
@@ -60,6 +62,10 @@ docs/.vitepress/cache/
 # Test directories
 test-hueforge/
 test-tokiforge/
+
+# Scripts (if they're not needed in repo)
+create-git-history.ps1
+setup-git-history.ps1
 
 # Example builds
 examples/*/dist/
