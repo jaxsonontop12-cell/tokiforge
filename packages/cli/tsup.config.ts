@@ -8,5 +8,9 @@ export default defineConfig({
   splitting: false,
   sourcemap: false,
   clean: true,
+  minify: true,
+  treeshake: true,
+  bundle: true,
+  external: ['@tokiforge/core'],
 });
 

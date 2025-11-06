@@ -150,6 +150,44 @@ In short — it's your **complete color and theme infrastructure**, built for th
 
 ---
 
+## 🏠 Local Usage
+
+For local development and testing, see [LOCAL_USAGE.md](./LOCAL_USAGE.md) for detailed instructions.
+
+**Quick Start:**
+```bash
+# Build all packages
+npm run build
+
+# Link all packages for local use
+npm run link:all
+
+# Use in your project
+npm link @tokiforge/core @tokiforge/react
+```
+
+---
+
+## 🌐 Global Usage
+
+For global CLI installation, see [GLOBAL_USAGE.md](./GLOBAL_USAGE.md) for detailed instructions.
+
+**Quick Start:**
+```bash
+# Install CLI globally from local source
+npm run install:global
+
+# Or install from npm (when published)
+npm install -g tokiforge-cli
+
+# Use anywhere
+tokiforge init
+tokiforge build
+tokiforge dev
+```
+
+---
+
 ## 🧠 Example Usage
 
 ```bash

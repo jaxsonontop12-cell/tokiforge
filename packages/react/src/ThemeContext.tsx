@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import { ThemeRuntime, DesignTokens, ThemeConfig } from '@tokiforge/core';
+import { ThemeRuntime } from '@tokiforge/core';
+import type { DesignTokens, ThemeConfig } from '@tokiforge/core';
 
 interface ThemeContextValue {
   theme: string;

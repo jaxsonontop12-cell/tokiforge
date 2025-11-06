@@ -11,7 +11,7 @@ const program = new Command();
 program
   .name('tokiforge')
   .description('Modern Design Token & Theme Engine CLI')
-  .version('1.0.0');
+  .version('0.1.0');
 
 program
   .command('init')

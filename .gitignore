@@ -8,8 +8,10 @@ pnpm-lock.yaml
 dist/
 build/
 *.tsbuildinfo
+**/.tsbuildinfo
 packages/*/dist/
 packages/*/build/
+.tsbuildinfo
 
 # Logs
 *.log

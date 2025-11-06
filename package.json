@@ -1,6 +1,6 @@
 {
   "name": "tokiforge",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Modern Design Token & Theme Engine",
   "private": true,
   "workspaces": [
@@ -10,13 +10,24 @@
     "build": "npm run build:core && npm run build:rest",
     "build:core": "npm run build --workspace @tokiforge/core",
     "build:rest": "npm run build --workspace @tokiforge/react --workspace @tokiforge/vue --workspace @tokiforge/svelte --workspace tokiforge-cli",
+    "build:all": "npm run build --workspaces",
     "dev": "npm run dev --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
+    "clean:all": "npm run clean --workspaces && rm -rf node_modules .tsbuildinfo",
     "docs:dev": "cd docs && npm install && npm run dev",
     "docs:build": "cd docs && npm install && npm run build",
-    "docs:preview": "cd docs && npm run preview"
+    "docs:preview": "cd docs && npm run preview",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "link:all": "npm run link:core && npm run link:react && npm run link:vue && npm run link:svelte && npm run link:cli",
+    "link:core": "cd packages/core && npm link",
+    "link:react": "cd packages/react && npm link && npm link @tokiforge/core",
+    "link:vue": "cd packages/vue && npm link && npm link @tokiforge/core",
+    "link:svelte": "cd packages/svelte && npm link && npm link @tokiforge/core",
+    "link:cli": "cd packages/cli && npm link",
+    "install:global": "cd packages/cli && npm run build && npm install -g .",
+    "uninstall:global": "npm uninstall -g tokiforge-cli"
   },
   "keywords": [
     "design-tokens",
@@ -41,6 +52,14 @@
   ],
   "author": "TokiForge Community",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TokiForge/tokiforge.git"
+  },
+  "homepage": "https://github.com/TokiForge/tokiforge#readme",
+  "bugs": {
+    "url": "https://github.com/TokiForge/tokiforge/issues"
+  },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "typescript": "^5.3.3"

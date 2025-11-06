@@ -1,4 +1,4 @@
-import { DesignTokens, TokenParserOptions } from './types';
+import type { DesignTokens, TokenParserOptions } from './types';
 import * as fs from 'fs';
 import * as path from 'path';
 import YAML from 'yaml';

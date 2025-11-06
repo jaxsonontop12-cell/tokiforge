@@ -1,4 +1,4 @@
-import { DesignTokens, Theme, ThemeConfig } from './types';
+import type { DesignTokens, Theme, ThemeConfig } from './types';
 import { TokenExporter } from './exporter';
 
 export class ThemeRuntime {

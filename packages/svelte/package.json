@@ -1,6 +1,6 @@
 {
   "name": "@tokiforge/svelte",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Svelte adapter for TokiForge theming",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,14 +15,19 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --external svelte",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external svelte",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint src --ext .ts",
     "clean": "rm -rf dist"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
   "peerDependencies": {
     "svelte": ">=3.0.0",
-    "@tokiforge/core": "^1.0.0"
+    "@tokiforge/core": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
@@ -30,7 +35,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@tokiforge/core": "^1.0.0"
+    "@tokiforge/core": "^0.1.0"
   },
   "keywords": [
     "svelte",
@@ -38,6 +43,14 @@
     "design-tokens"
   ],
   "author": "TokiForge Community",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TokiForge/tokiforge.git"
+  },
+  "homepage": "https://github.com/TokiForge/tokiforge#readme",
+  "bugs": {
+    "url": "https://github.com/TokiForge/tokiforge/issues"
+  }
 }
 

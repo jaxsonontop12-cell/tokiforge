@@ -1,5 +1,6 @@
 import { writable, derived } from 'svelte/store';
-import { ThemeRuntime, ThemeConfig } from '@tokiforge/core';
+import { ThemeRuntime } from '@tokiforge/core';
+import type { ThemeConfig } from '@tokiforge/core';
 
 export function createThemeStore(
   config: ThemeConfig,

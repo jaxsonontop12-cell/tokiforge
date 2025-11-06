@@ -1,4 +1,4 @@
-import { DesignTokens, TokenValue, TokenExportOptions } from './types';
+import type { DesignTokens, TokenValue, TokenExportOptions } from './types';
 
 export class TokenExporter {
   private static flattenTokens(
