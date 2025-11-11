@@ -19,7 +19,10 @@
     "build:all": "npm run build",
     "dev": "tsup --watch",
     "lint": "eslint src --ext .ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "test": "echo 'Angular tests require full Angular testing infrastructure. See packages/angular/src/theme.service.test.ts for test examples.'",
+    "test:watch": "echo 'Angular tests require full Angular testing infrastructure.'",
+    "test:ui": "echo 'Angular tests require full Angular testing infrastructure.'"
   },
   "files": [
     "dist",

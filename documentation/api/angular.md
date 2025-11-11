@@ -126,38 +126,12 @@ CSS string with theme variables
 const css = this.themeService.generateCSS('dark');
 ```
 
-### `getContext()`
+### `initialized: Signal<boolean>`
 
-Get the complete theme context object.
-
-**Signature:**
+Whether the service has been initialized.
 
 ```typescript
-getContext(): ThemeContext
-```
-
-**Returns:**
-
-```typescript
-interface ThemeContext {
-  theme: string;
-  tokens: DesignTokens;
-  setTheme: (themeName: string) => void;
-  nextTheme: () => void;
-  availableThemes: string[];
-  runtime: ThemeRuntime;
-  generateCSS?: (themeName?: string) => string; // Available in static mode
-}
-```
-
-### `getRuntime()`
-
-Get the underlying `ThemeRuntime` instance.
-
-**Signature:**
-
-```typescript
-getRuntime(): ThemeRuntime | null
+const isInit = this.themeService.initialized();
 ```
 
 ## Properties (Signals)
@@ -199,33 +173,20 @@ this.themeService.init(themeConfig, {
 
 This adds classes like `theme-light` or `theme-dark` to the body element. CSS variables are scoped by these classes.
 
-## CSS Generation Utilities
+### `destroy()`
 
-### `generateThemeCSS(config, options?)`
+Cleanup the service and remove injected CSS.
 
-Generate separate CSS files for each theme.
+**Signature:**
 
 ```typescript
-import { generateThemeCSS } from '@tokiforge/angular';
-
-const files = generateThemeCSS(themeConfig, {
-  bodyClassPrefix: 'theme',
-  prefix: 'hf',
-  format: 'css',
-});
+destroy(): void
 ```
 
-### `generateCombinedThemeCSS(config, options?)`
-
-Generate a single CSS file with all themes.
+**Example:**
 
 ```typescript
-import { generateCombinedThemeCSS } from '@tokiforge/angular';
-
-const css = generateCombinedThemeCSS(themeConfig, {
-  bodyClassPrefix: 'theme',
-  prefix: 'hf',
-});
+this.themeService.destroy();
 ```
 
 ## Types

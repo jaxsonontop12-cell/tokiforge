@@ -142,33 +142,32 @@ const current = runtime.getCurrentTheme();
 console.log(current); // 'light' or 'dark'
 ```
 
-### `getThemeTokens(themeName?)`
+### `getThemeTokens(themeName)`
 
-Get tokens for a specific theme or the current theme.
+Get tokens for a specific theme.
 
 **Signature:**
 
 ```typescript
-getThemeTokens(themeName?: string): DesignTokens
+getThemeTokens(themeName: string): DesignTokens
 ```
 
 **Parameters:**
 
-- `themeName?: string` - Theme name (optional, defaults to current theme)
+- `themeName: string` - Theme name (required)
 
 **Returns:** `DesignTokens` - Theme tokens
 
 **Example:**
 
 ```typescript
-const tokens = runtime.getThemeTokens();
-
 const darkTokens = runtime.getThemeTokens('dark');
+const lightTokens = runtime.getThemeTokens('light');
 ```
 
 **Throws:**
 
-- `Error` if theme name is not found
+- `ThemeError` if theme name is not found
 
 ### `getAvailableThemes()`
 
@@ -199,19 +198,23 @@ Cycle to the next available theme.
 nextTheme(): string
 ```
 
-**Returns:** `string` - New theme name
+**Returns:** `string` - Next theme name
 
 **Example:**
 
 ```typescript
+runtime.applyTheme('light');
 const newTheme = runtime.nextTheme();
-console.log(newTheme); // 'dark' (if current was 'light')
+console.log(newTheme); // 'dark'
+runtime.applyTheme(newTheme);
 ```
 
 **Behavior:**
 
 - Cycles through themes in order
 - Wraps around to first theme after last
+- Returns first theme if no current theme is set
+- Note: This method returns the next theme name but does not apply it. Use `applyTheme()` to actually switch themes.
 
 ### `destroy()`
 
@@ -245,13 +248,13 @@ Watch for system theme changes and call the callback.
 
 ```typescript
 watchSystemTheme(
-  callback: (theme: 'light' | 'dark') => void
+  callback: (systemTheme: string) => void
 ): () => void
 ```
 
 **Parameters:**
 
-- `callback: (theme: 'light' | 'dark') => void` - Callback function
+- `callback: (systemTheme: string) => void` - Callback function called when system theme changes
 
 **Returns:** `() => void` - Unwatch function
 
@@ -277,10 +280,10 @@ Detect the system's color scheme preference.
 **Signature:**
 
 ```typescript
-static detectSystemTheme(): 'light' | 'dark'
+static detectSystemTheme(): string
 ```
 
-**Returns:** `'light' | 'dark'` - System theme preference
+**Returns:** `string` - System theme preference (`'light'` or `'dark'`)
 
 **Example:**
 

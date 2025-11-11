@@ -136,6 +136,60 @@ Get current theme name.
 const current = runtime.getCurrentTheme();
 ```
 
+#### `getThemeTokens(themeName)`
+
+Get tokens for a specific theme.
+
+```typescript
+const tokens = runtime.getThemeTokens('dark');
+```
+
+#### `getAvailableThemes()`
+
+Get all available theme names.
+
+```typescript
+const themes = runtime.getAvailableThemes();
+console.log(themes); // ['light', 'dark']
+```
+
+#### `nextTheme()`
+
+Cycle to the next available theme.
+
+```typescript
+const nextTheme = runtime.nextTheme();
+runtime.applyTheme(nextTheme);
+```
+
+#### `destroy()`
+
+Cleanup runtime and remove injected CSS.
+
+```typescript
+runtime.destroy();
+```
+
+#### `watchSystemTheme(callback)`
+
+Watch for system theme changes.
+
+```typescript
+const unwatch = runtime.watchSystemTheme((theme) => {
+  runtime.applyTheme(theme);
+});
+unwatch();
+```
+
+#### `ThemeRuntime.detectSystemTheme()` (static)
+
+Detect the system's color scheme preference.
+
+```typescript
+const systemTheme = ThemeRuntime.detectSystemTheme();
+runtime.applyTheme(systemTheme);
+```
+
 ## TokenVersioning
 
 Manage token versions and deprecations.

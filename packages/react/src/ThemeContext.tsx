@@ -60,9 +60,10 @@ export function ThemeProvider({
 
   const nextTheme = useCallback(() => {
     const newTheme = runtime.nextTheme();
+    runtime.applyTheme(newTheme, selector, prefix);
     setThemeState(newTheme);
     setTokens(runtime.getThemeTokens(newTheme));
-  }, [runtime]);
+  }, [runtime, selector, prefix]);
 
   const value: ThemeContextValue = {
     theme,

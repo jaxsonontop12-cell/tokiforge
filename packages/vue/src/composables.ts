@@ -1,6 +1,6 @@
 import { inject, provide, ref, computed, type Ref, type ComputedRef, type InjectionKey } from 'vue';
 import type { DesignTokens, ThemeConfig } from '@tokiforge/core';
-import { ThemeRuntime as ThemeRuntimeClass, TokenExporter, ThemeRuntime } from '@tokiforge/core';
+import { ThemeRuntime, TokenExporter } from '@tokiforge/core';
 
 const ThemeKey: InjectionKey<ThemeContext<DesignTokens>> = Symbol('tokiforge-theme');
 
@@ -26,7 +26,7 @@ export interface ThemeContext<T extends DesignTokens = DesignTokens> {
   setTheme: (themeName: string) => void;
   nextTheme: () => void;
   availableThemes: ComputedRef<string[]>;
-  runtime: ThemeRuntimeClass;
+  runtime: ThemeRuntime;
   generateCSS?: (themeName?: string) => string;
 }
 
@@ -53,16 +53,16 @@ export function provideTheme<T extends DesignTokens = DesignTokens>(
   } = options;
 
   const themeConfig: ThemeConfig = config as ThemeConfig;
-  const runtime = new ThemeRuntimeClass(themeConfig);
-  const availableThemes = runtime.getAvailableThemes();
+  const runtime = new ThemeRuntime(themeConfig);
+  const availableThemesList = runtime.getAvailableThemes();
   
-  let initialTheme = defaultTheme || themeConfig.defaultTheme || availableThemes[0] || 'default';
+  let initialTheme = defaultTheme || themeConfig.defaultTheme || availableThemesList[0] || 'default';
   
   if (typeof window !== 'undefined') {
     if (persist && window.localStorage && typeof window.localStorage.getItem === 'function') {
       try {
         const saved = window.localStorage.getItem('tokiforge-theme');
-        if (saved && availableThemes.includes(saved)) {
+        if (saved && availableThemesList.includes(saved)) {
           initialTheme = saved;
         }
       } catch (e) {
@@ -72,7 +72,7 @@ export function provideTheme<T extends DesignTokens = DesignTokens>(
     
     if (watchSystemTheme && !persist) {
       const systemTheme = ThemeRuntime.detectSystemTheme();
-      if (availableThemes.includes(systemTheme)) {
+      if (availableThemesList.includes(systemTheme)) {
         initialTheme = systemTheme;
       }
     }
@@ -82,12 +82,12 @@ export function provideTheme<T extends DesignTokens = DesignTokens>(
   const tokens = computed(() => runtime.getThemeTokens(theme.value) as T);
 
   const setTheme = (name: string) => {
-    if (!availableThemes.includes(name)) {
-      throw new Error(`Theme "${name}" not found. Available themes: ${availableThemes.join(', ')}`);
+    if (!availableThemesList.includes(name)) {
+      throw new Error(`Theme "${name}" not found. Available themes: ${availableThemesList.join(', ')}`);
     }
 
     if (mode === 'static') {
-      availableThemes.forEach(t => {
+      availableThemesList.forEach((t: string) => {
         document.body.classList.remove(`${bodyClassPrefix}-${t}`);
       });
       document.body.classList.add(`${bodyClassPrefix}-${name}`);
@@ -115,8 +115,8 @@ export function provideTheme<T extends DesignTokens = DesignTokens>(
     }
 
     if (watchSystemTheme) {
-      const unwatch = runtime.watchSystemTheme((systemTheme) => {
-        if (availableThemes.includes(systemTheme)) {
+      const unwatch = runtime.watchSystemTheme((systemTheme: string) => {
+        if (availableThemesList.includes(systemTheme)) {
           setTheme(systemTheme);
         }
       });
@@ -137,9 +137,9 @@ export function provideTheme<T extends DesignTokens = DesignTokens>(
   }
 
   const nextTheme = () => {
-    const currentIndex = availableThemes.indexOf(theme.value);
-    const nextIndex = (currentIndex + 1) % availableThemes.length;
-    setTheme(availableThemes[nextIndex]);
+    const currentIndex = availableThemesList.indexOf(theme.value);
+    const nextIndex = (currentIndex + 1) % availableThemesList.length;
+    setTheme(availableThemesList[nextIndex]);
   };
 
   const generateCSS = (themeName?: string) => {
@@ -160,7 +160,7 @@ export function provideTheme<T extends DesignTokens = DesignTokens>(
     tokens,
     setTheme,
     nextTheme,
-    availableThemes: computed(() => availableThemes),
+    availableThemes: computed(() => availableThemesList),
     runtime,
     ...(mode === 'static' ? { generateCSS } : {}),
   };

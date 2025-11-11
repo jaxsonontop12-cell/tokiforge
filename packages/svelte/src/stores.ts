@@ -34,6 +34,7 @@ export function createThemeStore(
     },
     nextTheme: () => {
       const newTheme = runtime.nextTheme();
+      runtime.applyTheme(newTheme, selector, prefix);
       theme.set(newTheme);
     },
     availableThemes: derived(theme, () => runtime.getAvailableThemes()),
