@@ -44,7 +44,7 @@ export async function lintCommand(projectPath: string = process.cwd()): Promise<
     console.log('Validating aliases...');
     const aliasValidation = TokenParser.validateAliases(tokens);
     if (!aliasValidation.valid) {
-      aliasValidation.errors.forEach(err => result.errors.push(err));
+      aliasValidation.errors.forEach((err: string) => result.errors.push(err));
     } else {
       console.log('All aliases valid\n');
     }

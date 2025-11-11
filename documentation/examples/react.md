@@ -1,13 +1,13 @@
 # React Example
 
-> **TokiForge v1.1.1**
+> **TokiForge v1.1.2**
 
 Complete React example using TokiForge.
 
 ## Setup
 
 ```bash
-npm install @tokiforge/react@^1.1.1 @tokiforge/core@^1.1.1 react react-dom
+npm install @tokiforge/react@^1.1.2 @tokiforge/core@^1.1.2 react react-dom
 ```
 
 ## Code

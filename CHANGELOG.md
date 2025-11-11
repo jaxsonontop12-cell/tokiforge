@@ -5,6 +5,40 @@ All notable changes to TokiForge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2025-11-12
+
+### Fixed
+
+- **Vue Package**: Fixed package.json exports configuration - removed redundant `default` field from exports that was causing resolution issues
+- **Angular Package**: Fixed package.json exports configuration - removed redundant `default` field and duplicate `typings` field
+- **Package Exports**: Standardized all packages to use modern export pattern (`type: module` with `.cjs`/`.js` extensions)
+- **TypeScript Errors**: Fixed all 12 TypeScript compilation errors:
+  - Added missing `generateReport()` method to `TokenAnalytics` class
+  - Added missing `exportJSON()` method to `FigmaDiff` class
+  - Added missing `validateAliases()` method to `TokenParser` class
+  - Added missing `getContrastRatio()` method to `ColorUtils` class
+  - Added missing `generateReport()` method to `CICDValidator` class
+  - Fixed unused variables in `accessibility-utils.ts`, `token-exporter.ts`, and `token-versioning.ts`
+  - Updated CLI commands to use correct API methods and type annotations
+
+### Changed
+
+- **Version Bump**: All packages updated from 1.1.1 to 1.1.2
+- **Package Exports**: Standardized all framework packages (React, Svelte, Angular, Tailwind, Figma) to use modern export pattern matching Core and Vue packages
+- **Export Structure**: All packages now consistently use:
+  - `"type": "module"` for explicit ESM support
+  - `index.cjs` for CommonJS exports
+  - `index.js` for ESM exports
+  - Proper `exports` field without redundant `default` entries
+- **Dependencies**: All internal dependencies updated to `@tokiforge/core@^1.1.2`
+- **Documentation**: Updated all documentation files to reflect version 1.1.2
+
+### Technical Improvements
+
+- **Package Consistency**: All packages now use the same modern export pattern for better compatibility with modern bundlers (Vite, Webpack 5+, Rollup)
+- **Export Best Practices**: Removed problematic `default` field from exports to follow Node.js package exports best practices
+- **Type Safety**: Maintained full TypeScript support with proper type definitions
+
 ## [1.1.1] - 2025-11-12
 
 ### Fixed
@@ -238,6 +272,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Framework-agnostic theming system
 - Complete documentation and examples
 
+[1.1.2]: https://github.com/tokiforge/tokiforge/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/tokiforge/tokiforge/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/tokiforge/tokiforge/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/tokiforge/tokiforge/compare/v0.2.1...v1.0.0

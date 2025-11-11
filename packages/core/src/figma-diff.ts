@@ -1,4 +1,5 @@
 import type { DesignTokens, DiffResult, DiffOptions } from './types';
+import fs from 'fs';
 
 export class FigmaDiff {
   static compare(figmaTokens: DesignTokens, codeTokens: DesignTokens, options: DiffOptions = {}): DiffResult {
@@ -169,6 +170,10 @@ export class FigmaDiff {
     }
 
     return false;
+  }
+
+  static exportJSON(diff: DiffResult, outputPath: string): void {
+    fs.writeFileSync(outputPath, JSON.stringify(diff, null, 2));
   }
 }
 

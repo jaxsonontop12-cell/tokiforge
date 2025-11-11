@@ -34,12 +34,10 @@ export async function analyticsCommand(projectPath: string = process.cwd()): Pro
       outputPath,
       JSON.stringify(
         {
-          usage: Array.from(report.usage.entries()).map(([path, usage]) => ({
-            path,
-            ...usage,
-          })),
-          bundle: report.bundle,
           coverage: report.coverage,
+          unused: report.unused,
+          used: report.used,
+          total: report.total,
         },
         null,
         2

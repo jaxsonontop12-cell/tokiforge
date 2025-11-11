@@ -4,7 +4,7 @@ layout: home
 hero:
   name: TokiForge
   text: Design Token & Theme Engine
-  tagline: Forge your colors. Shape your UI. (v1.1.1)
+  tagline: Forge your colors. Shape your UI. (v1.1.2)
   image:
     src: /logo.svg
     alt: TokiForge

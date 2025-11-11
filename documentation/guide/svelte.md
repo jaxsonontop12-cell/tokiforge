@@ -1,13 +1,13 @@
 # Svelte Guide
 
-> **TokiForge v1.1.1**
+> **TokiForge v1.1.2**
 
 Complete guide to using TokiForge with Svelte.
 
 ## Installation
 
 ```bash
-npm install @tokiforge/svelte@^1.1.1 @tokiforge/core@^1.1.1
+npm install @tokiforge/svelte@^1.1.2 @tokiforge/core@^1.1.2
 ```
 
 ## Setup

@@ -162,5 +162,76 @@ export class TokenParser {
 
     return expandTokens(expanded);
   }
+
+  static validateAliases(tokens: DesignTokens): {
+    valid: boolean;
+    errors: string[];
+  } {
+    const errors: string[] = [];
+    const allPaths = new Set<string>();
+
+    const collectPaths = (obj: any, path: string = ''): void => {
+      if (typeof obj !== 'object' || obj === null) {
+        return;
+      }
+
+      if (Array.isArray(obj)) {
+        obj.forEach((item, index) => {
+          collectPaths(item, `${path}[${index}]`);
+        });
+        return;
+      }
+
+      if ('value' in obj) {
+        if (path) {
+          allPaths.add(path);
+        }
+      } else {
+        for (const key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            const newPath = path ? `${path}.${key}` : key;
+            collectPaths(obj[key], newPath);
+          }
+        }
+      }
+    };
+
+    const validateAlias = (obj: any, path: string = ''): void => {
+      if (typeof obj !== 'object' || obj === null) {
+        return;
+      }
+
+      if (Array.isArray(obj)) {
+        obj.forEach((item, index) => {
+          validateAlias(item, `${path}[${index}]`);
+        });
+        return;
+      }
+
+      if ('$alias' in obj) {
+        const aliasPath = obj.$alias as string;
+        if (!allPaths.has(aliasPath)) {
+          errors.push(`Invalid alias at ${path}: ${aliasPath} not found`);
+        }
+      } else if ('value' in obj) {
+        // Skip token values
+      } else {
+        for (const key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            const newPath = path ? `${path}.${key}` : key;
+            validateAlias(obj[key], newPath);
+          }
+        }
+      }
+    };
+
+    collectPaths(tokens);
+    validateAlias(tokens);
+
+    return {
+      valid: errors.length === 0,
+      errors,
+    };
+  }
 }
 

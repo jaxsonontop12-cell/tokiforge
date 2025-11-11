@@ -43,7 +43,6 @@ export class AccessibilityUtils {
 
   static checkAccessibility(tokens: DesignTokens): AccessibilityMetrics[] {
     const metrics: AccessibilityMetrics[] = [];
-    const colorPairs: Array<[string, string]> = [];
 
     const extractColors = (obj: any, path: string = ''): string[] => {
       const colors: string[] = [];

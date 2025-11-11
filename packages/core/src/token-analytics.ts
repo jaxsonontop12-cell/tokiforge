@@ -62,5 +62,29 @@ export class TokenAnalytics {
   reset(): void {
     this.usage.clear();
   }
+
+  generateReport(tokens: DesignTokens): string {
+    const report = this.getUsageReport(tokens);
+    const lines: string[] = [];
+    
+    lines.push('Token Analytics Report');
+    lines.push('='.repeat(50));
+    lines.push('');
+    lines.push(`Total Tokens: ${report.total}`);
+    lines.push(`Used Tokens: ${report.used.length}`);
+    lines.push(`Unused Tokens: ${report.unused.length}`);
+    lines.push(`Coverage: ${report.coverage.toFixed(2)}%`);
+    lines.push('');
+    
+    if (report.unused.length > 0) {
+      lines.push(`Unused Tokens (${report.unused.length}):`);
+      report.unused.forEach((path) => {
+        lines.push(`  - ${path}`);
+      });
+      lines.push('');
+    }
+    
+    return lines.join('\n');
+  }
 }
 

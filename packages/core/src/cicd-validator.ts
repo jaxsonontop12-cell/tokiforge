@@ -94,6 +94,39 @@ export class CICDValidator {
     return result.valid ? 0 : 1;
   }
 
+  static generateReport(result: CICDValidationResult): string {
+    const lines: string[] = [];
+    
+    lines.push('CI/CD Validation Report');
+    lines.push('='.repeat(50));
+    lines.push('');
+    
+    if (result.valid) {
+      lines.push('✅ Validation passed');
+    } else {
+      lines.push('❌ Validation failed');
+    }
+    lines.push('');
+    
+    if (result.errors.length > 0) {
+      lines.push(`Errors (${result.errors.length}):`);
+      result.errors.forEach((error) => {
+        lines.push(`  ❌ ${error}`);
+      });
+      lines.push('');
+    }
+    
+    if (result.warnings.length > 0) {
+      lines.push(`Warnings (${result.warnings.length}):`);
+      result.warnings.forEach((warning) => {
+        lines.push(`  ⚠️  ${warning}`);
+      });
+      lines.push('');
+    }
+    
+    return lines.join('\n');
+  }
+
   private static getDeprecatedTokens(tokens: DesignTokens): string[] {
     const deprecated: string[] = [];
 

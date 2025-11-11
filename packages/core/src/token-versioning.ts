@@ -4,7 +4,6 @@ import type {
   VersionValidationResult,
   TokenValue,
 } from './types';
-import { ValidationError } from './types';
 
 export class TokenVersioning {
   static getDeprecatedTokens(tokens: DesignTokens): string[] {

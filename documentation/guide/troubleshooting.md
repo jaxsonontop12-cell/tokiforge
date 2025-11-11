@@ -121,11 +121,11 @@ const { tokens } = useTheme();
 **Error:** `Failed to resolve entry for package "@tokiforge/vue". The package may have incorrect main/module/exports specified in its package.json`
 
 **Solution:**
-This issue was fixed in v1.1.1. If you're experiencing this:
+This issue was fixed in v1.1.2. If you're experiencing this:
 
 1. Ensure you're using the latest version:
    ```bash
-   npm install @tokiforge/vue@^1.1.1
+   npm install @tokiforge/vue@^1.1.2
    ```
 
 2. Clear your node_modules and reinstall:
@@ -137,7 +137,7 @@ This issue was fixed in v1.1.1. If you're experiencing this:
 3. Clear npm cache if the issue persists:
    ```bash
    npm cache clean --force
-   npm install @tokiforge/vue@^1.1.1
+   npm install @tokiforge/vue@^1.1.2
    ```
 
 **Note:** This was caused by incorrect package.json exports that didn't match the actual build output. The fix aligns exports with the built files (`index.cjs` for CommonJS, `index.js` for ESM).
@@ -164,10 +164,10 @@ $themeStore.theme
 **Solution:**
 ```bash
 # Install globally
-npm install -g tokiforge-cli@^1.1.1
+npm install -g tokiforge-cli@^1.1.2
 
 # Or use npx
-npx tokiforge-cli@^1.1.1 init
+npx tokiforge-cli@^1.1.2 init
 ```
 
 ### Build Errors

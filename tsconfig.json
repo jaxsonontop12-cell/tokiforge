@@ -18,9 +18,13 @@
     "noImplicitReturns": true,
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo",
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tokiforge/core": ["./packages/core/src/index.ts"]
+    }
   },
   "include": ["packages/core/src/**/*", "packages/cli/src/**/*", "packages/angular/src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts", "**/.tsbuildinfo", "**/vitest.config.ts", "examples/**", "documentation/**", "packages/react/**", "packages/vue/**", "packages/svelte/**"]
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts", "**/.tsbuildinfo", "**/vitest.config.ts", "examples/**", "documentation/**", "packages/react/**", "packages/vue/**", "packages/svelte/**", "packages/figma/**"]
 }
 

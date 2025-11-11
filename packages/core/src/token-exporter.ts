@@ -67,7 +67,7 @@ export class TokenExporter {
     if (useVariables) {
       const flatTokens = this.flattenTokens(tokens, prefix);
       const jsVars = Object.entries(flatTokens)
-        .map(([key, value]) => {
+        .map(([key]) => {
           const jsKey = key.replace(/-/g, '_');
           return `  ${jsKey}: 'var(--${key})'`;
         })
