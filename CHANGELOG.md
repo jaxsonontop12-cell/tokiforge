@@ -5,7 +5,11 @@ All notable changes to TokiForge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.1] - 2025-11-11
+## [1.1.1] - 2025-11-12
+
+### Fixed
+
+- **Core Package**: Fixed Vitest configuration timeout issue on Windows - changed from forks to threads pool to resolve "Timeout starting forks runner" error
 
 ### Changed
 
@@ -15,8 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Technical Improvements
 
-- **Code Cleanup**: Removed unnecessary comments and markdown sections from documentation
+- **Code Cleanup**: Removed unnecessary comments from source files (tsup configs, stub files, example files)
+- **Documentation**: Removed unnecessary comments and markdown sections from documentation
 - **Release Template**: Updated release template to be version-agnostic
+- **Test Configuration**: Improved Vitest configuration for better Windows compatibility and explicit test file patterns
 
 ## [1.1.0] - 2025-11-11
 
